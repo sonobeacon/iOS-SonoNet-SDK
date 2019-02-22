@@ -16,6 +16,8 @@ We will provide you with the SDK as well as the Api key and the Location Id.
 
 <h2>Inside your app</h2>
 
+<h3>Swift:</h3>
+
 Go to your ViewController you want use SonoNet and import sonolib:
 
  `import sonolib`
@@ -40,11 +42,12 @@ Use the closure callback to receive the content of detected Sono beacons:
  
 <h3>Objective-C implementation:</h3>
  
-`SonoSystem *sonoSystem = [SonoSystem shared];
- SonoSystemCredentials *credentials = [[SonoSystemCredentials alloc] initWithApiKey:@"YOUR_API_KEY" locationId:"YOUR_LOCATION_ID"];
+`SonoSystem *sonoSystem = [SonoSystem shared];`
+
+ `SonoSystemCredentials *credentials = [[SonoSystemCredentials alloc] initWithApiKey:@"YOUR_API_KEY" locationId:"YOUR_LOCATION_ID"];
  [sonoSystem bindWithCredentials:(credentials) andOptionalContentView:nil];`
     
-    `[sonoSystem setDidReceiveContent:^(id webLink) {
+ `[sonoSystem setDidReceiveContent:^(id webLink) {
         __weak ViewController *wSelf = self;
         NSString *title = [webLink title];
         wSelf.label.text = title;
