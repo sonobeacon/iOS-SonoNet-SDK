@@ -40,9 +40,11 @@ sonoSystem.didReceiveContent = { [weak self] content in
 
 
 ```objective-C
+@import sonolib;
+
 SonoSystem *sonoSystem = [SonoSystem shared];
 
-SonoSystemCredentials *credentials = [[SonoSystemCredentials alloc] initWithApiKey:@"YOUR_API_KEY" locationId:"YOUR_LOCATION_ID"];
+SonoSystemCredentials *credentials = [[SonoSystemCredentials alloc] initWithApiKey:@"YOUR_API_KEY" locationId:@"YOUR_LOCATION_ID"];
 [sonoSystem bindWithCredentials:(credentials) andOptionalContentView:nil];
 
 [sonoSystem setDidReceiveContent:^(id webLink) {
