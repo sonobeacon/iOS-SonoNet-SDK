@@ -33,7 +33,6 @@ let credentials = SonoSystemCredentials(apiKey: "YOUR_API_KEY", locationId: "YOU
 sonoSystem.didReceiveContent = { [weak self] content in
             guard let strongSelf = self else { return }
             print("\(content.title)")
-            strongSelf.label.text = content.title
         }
 ```
 
