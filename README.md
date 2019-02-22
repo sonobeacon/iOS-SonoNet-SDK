@@ -31,7 +31,7 @@ Then set up the credentials using SonoSystemCredentials and initialize SonoSyste
  `let credentials = SonoSystemCredentials(apiKey: "YOUR_API_KEY", locationId: "YOUR_LOCATION_ID")
   sonoSystem.bind(withCredentials: credentials)`
  
-Use the closure callback to receive the content of detected Sono beacons:
+Use the closure callback to receive the content of detected Sonobeacons:
  
  `sonoSystem.didReceiveContent = { [weak self] content in
             guard let strongSelf = self else { return }
