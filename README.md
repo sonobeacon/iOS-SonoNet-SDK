@@ -46,9 +46,8 @@ SonoSystemCredentials *credentials = [[SonoSystemCredentials alloc] initWithApiK
 [sonoSystem bindWithCredentials:(credentials) andOptionalContentView:nil];
 
 [sonoSystem setDidReceiveContent:^(id webLink) {
-        __weak ViewController *wSelf = self;
         NSString *title = [webLink title];
-        wSelf.label.text = title;
+        NSLog(@"%@", title);
     }];
 ```
 
