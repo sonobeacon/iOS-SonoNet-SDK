@@ -55,4 +55,4 @@ SonoSystemCredentials *credentials = [[SonoSystemCredentials alloc] initWithApiK
 
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+MIT. See the [LICENSE](https://choosealicense.com/licenses/mit/) for details.
