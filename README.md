@@ -46,7 +46,7 @@ Set „Always Embed Standard Swift Libraries“ to Yes in Build Settings.
 
 SonoSystem *sonoSystem = [SonoSystem shared];
 
-SonoSystemCredentials *credentials = [[SonoSystemCredentials alloc] initWithApiKey:@"YOUR_API_KEY"];
+SonoSystemCredentials *credentials = [[SonoSystemCredentials alloc] initWithApiKey:@"YOUR_API_KEY" locationId:NULL];
 [sonoSystem bindWithCredentials:(credentials) andOptionalContentView:nil];
 
 [sonoSystem setDidReceiveContent:^(id webLink) {
