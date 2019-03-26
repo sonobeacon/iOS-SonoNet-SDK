@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let credentials = SonoNetCredentials(apiKey: "YOUR_API_KEY", locationId: "LOCATION_ID")
-        sonoSystem.bind(withCredentials: credentials, andOptionalContentView: contentView)
+        sonoNet.bind(withCredentials: credentials, andOptionalContentView: contentView)
         
         sonoNet.didReceiveContent = { [weak self] content in
             guard let strongSelf = self else { return }
