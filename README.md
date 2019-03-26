@@ -32,7 +32,7 @@ let sonoNet = SonoNet.shared
 Afterwards set up the credentials using SonoNetCredentials (locationId is optional) and initialize SonoNet. Use the closure callback to receive the content of detected Sonobeacons:
 
 ```swift
-let credentials = SonoNetCredentials(apiKey: "YOUR_API_KEY", locationId: "LOCATION_ID")
+let credentials = SonoNetCredentials(apiKey: "YOUR_API_KEY", locationId: "LOCATION_ID") /* REPLACE WITH YOUR CREDENTIALS */
 // let credentials = SonoNetCredentials(apiKey: "YOUR_API_KEY")
 sonoNet.bind(withCredentials: credentials, andOptionalContentView: contentView) /* optional */
 // sonoNet.bind(withCredentials: credentials)
