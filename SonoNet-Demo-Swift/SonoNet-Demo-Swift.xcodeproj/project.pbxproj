@@ -12,6 +12,7 @@
 		4CC975C9224A6CDF00761B0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC975C7224A6CDF00761B0E /* Main.storyboard */; };
 		4CC975CB224A6CE000761B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC975CA224A6CE000761B0E /* Assets.xcassets */; };
 		4CC975CE224A6CE000761B0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC975CC224A6CE000761B0E /* LaunchScreen.storyboard */; };
+		4CC975FB224A787500761B0E /* sonolib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC975FA224A787500761B0E /* sonolib.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		4CC975CA224A6CE000761B0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CC975CD224A6CE000761B0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CC975CF224A6CE000761B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CC975FA224A787500761B0E /* sonolib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sonolib.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CC975FB224A787500761B0E /* sonolib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +41,7 @@
 		4CC975B7224A6CDF00761B0E = {
 			isa = PBXGroup;
 			children = (
+				4CC975FA224A787500761B0E /* sonolib.framework */,
 				4CC975C2224A6CDF00761B0E /* SonoNet-Demo-Swift */,
 				4CC975C1224A6CDF00761B0E /* Products */,
 			);
@@ -284,7 +288,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNX23LVE29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "SonoNet-Demo-Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +311,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNX23LVE29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "SonoNet-Demo-Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

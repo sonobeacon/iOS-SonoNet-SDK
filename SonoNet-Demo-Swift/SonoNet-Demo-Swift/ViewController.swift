@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import sonolib
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var contentView: ContentView!
+    let sonoNet = SonoNet.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let credentials = SonoNetCredentials(apiKey: "YOUR_API_KEY", locationId: "LOCATION_ID")
+        sonoSystem.bind(withCredentials: credentials, andOptionalContentView: contentView)
+        
+        sonoNet.didReceiveContent = { [weak self] content in
+            guard let strongSelf = self else { return }
+            print("\(content.title)")
+            strongSelf.label.text = content.title
+        }
     }
-
+    
 
 }
 
