@@ -12,6 +12,7 @@ import sonolib
 class ViewController: UIViewController {
 
     @IBOutlet weak var contentView: ContentView!
+    
     let sonoNet = SonoNet.shared
     
     override func viewDidLoad() {
@@ -22,7 +23,6 @@ class ViewController: UIViewController {
         sonoNet.didReceiveContent = { [weak self] content in
             guard let strongSelf = self else { return }
             print("\(content.title)")
-            strongSelf.label.text = content.title
         }
     }
     
