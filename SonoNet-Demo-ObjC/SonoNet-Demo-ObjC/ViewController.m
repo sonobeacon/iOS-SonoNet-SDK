@@ -26,7 +26,7 @@
     [sonoNet bindWithCredentials:(credentials) andOptionalContentView:contentView];
     
     [sonoNet setWhenBluetoothDisabled:^{
-        // TODO -show alert
+        // do nothing so far
     }];
     
     
