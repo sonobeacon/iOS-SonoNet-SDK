@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CA2EB53224B6A61003D1EE8 /* sonolib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA2EB52224B6A61003D1EE8 /* sonolib.framework */; };
 		4CC975E4224A705800761B0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC975E3224A705800761B0E /* AppDelegate.m */; };
 		4CC975E7224A705800761B0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC975E6224A705800761B0E /* ViewController.m */; };
 		4CC975EA224A705800761B0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC975E8224A705800761B0E /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CA2EB52224B6A61003D1EE8 /* sonolib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sonolib.framework; sourceTree = "<group>"; };
 		4CC975DF224A705800761B0E /* SonoNet-Demo-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SonoNet-Demo-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC975E2224A705800761B0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4CC975E3224A705800761B0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA2EB53224B6A61003D1EE8 /* sonolib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 		4CC975D6224A705800761B0E = {
 			isa = PBXGroup;
 			children = (
+				4CA2EB52224B6A61003D1EE8 /* sonolib.framework */,
 				4CC975E1224A705800761B0E /* SonoNet-Demo-ObjC */,
 				4CC975E0224A705800761B0E /* Products */,
 			);
@@ -287,7 +291,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNX23LVE29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "SonoNet-Demo-ObjC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +313,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNX23LVE29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "SonoNet-Demo-ObjC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
