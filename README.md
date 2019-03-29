@@ -4,10 +4,9 @@ Minimum requirements: iOS 10
 
 ## How to use
 
-Create a new iOS Xcode project or open an existing project. Simply drag the sonolib.framework into your project navigator on the left hand side, possibly onto the Framework group, but thats entirely up to you.
+Create a new iOS Xcode project or open an existing project. Simply add the sonolib.framework to the "Embedded Binaries" section in the general settings of your app.
 
 Make sure that the ‚Add to targets‘ checkbox is checked for the correct target you intend to use the framework with. You can check Copy items into destination group’s folder if needed.
-Add the framework to the Embedded Binaries in the General Project Settings.
 
 Set „Enable Bitcode“ to No in Build Settings.
 Also add descriptions to your Info.plist, why you will be using microphone and location tracking.
