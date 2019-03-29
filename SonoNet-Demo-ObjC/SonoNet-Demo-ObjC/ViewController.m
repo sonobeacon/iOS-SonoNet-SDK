@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+
 @import sonolib;
 
 @interface ViewController ()
@@ -21,9 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+    
     SonoNet *sonoNet = [SonoNet shared];
     SonoNetCredentials *credentials = [[SonoNetCredentials alloc] initWithApiKey:@"YOUR_API_KEY" locationId:@"LOCATION_ID"];
-    [sonoNet bindWithCredentials:(credentials) andOptionalContentView:contentView];
+    [sonoNet bindWithCredentials:(credentials) andOptionalContentView:_contentView];
     
     [sonoNet setWhenBluetoothDisabled:^{
         // do nothing so far
@@ -35,7 +39,7 @@
         NSString *title = [webLink title];
         NSLog(@"Title", title);
     }];
-
+    
 }
 
 

@@ -18,26 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fec-d1-wPg" customClass="ContentView" customModule="sonolib">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EfY-gB-bLo" customClass="ContentView" customModule="sonolib">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fec-d1-wPg" secondAttribute="bottom" id="juC-Ce-dV2"/>
-                            <constraint firstItem="fec-d1-wPg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nIa-RD-5Om"/>
-                            <constraint firstItem="fec-d1-wPg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pSc-f7-knq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fec-d1-wPg" secondAttribute="trailing" id="xTj-kk-xpE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EfY-gB-bLo" secondAttribute="trailing" id="7nl-sF-xtz"/>
+                            <constraint firstAttribute="bottom" secondItem="EfY-gB-bLo" secondAttribute="bottom" id="HZd-FW-i4X"/>
+                            <constraint firstItem="EfY-gB-bLo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="nQZ-82-MVc"/>
+                            <constraint firstItem="EfY-gB-bLo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xjW-dq-ceT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="contentView" destination="fec-d1-wPg" id="5Lo-ED-UCl"/>
+                        <outlet property="contentView" destination="EfY-gB-bLo" id="PiQ-Lp-xNl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>
