@@ -13,8 +13,6 @@
 		4CC975EC224A705900761B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC975EB224A705900761B0E /* Assets.xcassets */; };
 		4CC975EF224A705900761B0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC975ED224A705900761B0E /* LaunchScreen.storyboard */; };
 		4CC975F2224A705900761B0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC975F1224A705900761B0E /* main.m */; };
-		4CEC22E8224E452100DB3A71 /* sonolib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEC22E7224E452000DB3A71 /* sonolib.framework */; };
-		4CEC22E9224E452100DB3A71 /* sonolib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEC22E7224E452000DB3A71 /* sonolib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +22,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4CEC22E9224E452100DB3A71 /* sonolib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,7 +39,6 @@
 		4CC975EE224A705900761B0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CC975F0224A705900761B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CC975F1224A705900761B0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4CEC22E7224E452000DB3A71 /* sonolib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sonolib.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CEC22E8224E452100DB3A71 /* sonolib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +55,6 @@
 		4CC975D6224A705800761B0E = {
 			isa = PBXGroup;
 			children = (
-				4CEC22E7224E452000DB3A71 /* sonolib.framework */,
 				4CC975E1224A705800761B0E /* SonoNet-Demo-ObjC */,
 				4CC975E0224A705800761B0E /* Products */,
 			);
