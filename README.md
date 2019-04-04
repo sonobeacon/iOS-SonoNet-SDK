@@ -15,6 +15,8 @@ Also add descriptions to your Info.plist, why you will be using microphone and l
 We will provide you with the SDK as well as the Api key and the Location Id. Note: The location Id is an identifier used to determine a particular location/environment in which beacons can be detected. E.g. Your retail store is equipped with 5 Sono beacons, thus only those 5 beacons (which are associated to the location) are detected by the SDK. Skip adding the location Id to the SonoNetCredentials if you do not want to detect only certain Sono beacons within a single environment.
 
 Note: The ContentView is an UI component that controls the display of content via the SDK. Mainly, the content associated to a beacon is displayed in a web view, whereby individual functions extend and enhance the user experience. You don't need to use the ContentView if you want to handle the display of content by yourself.
+Usage: Simply drag an UIView to your View in Storyboard, set the Constraints and naviagte to the Identity Inspector. Rename the Class to 'ContentView'. Below, set the Module 'sonolib'. Then connect the created ContentView to the corresponding ViewController using an outlet.
+
 
 ## Inside your app
 
@@ -29,7 +31,7 @@ import sonolib
 let sonoNet = SonoNet.shared
 ```
 
-Afterwards set up the credentials using SonoNetCredentials (locationId is optional) and initialize SonoNet. Use the closure callback to receive the content of detected Sonobeacons:
+Afterwards set up the credentials using SonoNetCredentials (locationId is optional) and initialize SonoNet. Use the closure callback to receive the content of detected Sonobeacons. The content contains the id, title and url:
 
 ```swift
 let credentials = SonoNetCredentials(apiKey: "YOUR_API_KEY", locationId: "LOCATION_ID") /* REPLACE WITH YOUR CREDENTIALS */
