@@ -9,10 +9,15 @@ Create a new iOS Xcode project or open an existing project. Simply add the sonol
 Make sure that the ‚Add to targets‘ checkbox is checked for the correct target you intend to use the framework with. You can check Copy items into destination group’s folder if needed.
 
 Set „Enable Bitcode“ to No in Build Settings.
-Also add descriptions to your Info.plist, why you will be using microphone and location tracking.
-(Privacy - Microphone Usage Description | Privacy - Location Always Usage Description | Location When In Use Description | Privacy - Bluetooth Peripheral Usage Description)
 
-We will provide you with the SDK as well as the Api key and the Location Id. Note: The location Id is an identifier used to determine a particular location/environment in which beacons can be detected. E.g. Your retail store is equipped with 5 Sono beacons, thus only those 5 beacons (which are associated to the location) are detected by the SDK. Skip adding the location Id to the SonoNetCredentials if you do not want to detect only certain Sono beacons within a single environment.
+#### Permissions
+Add descriptions to your Info.plist to describe why you will be using the microphone as well as location tracking.
+(Privacy - Microphone Usage Description | Privacy - Location Always Usage Description | Location When In Use Description | Location Always And When In Use UsageDescription | Privacy - Bluetooth Peripheral Usage Description | Bluetooth Always Usage Description)
+
+You additionally need to turn on Location Updates in Background Modes among Capabilities settings.
+
+#### Credentials
+We will provide you with the SDK as well as the corresponding Api key and Location Id. Note: The Location Id is an identifier used to determine a particular location/environment in which beacons can be detected. E.g. Your retail store is equipped with 5 Sonobeacons, thus only those 5 beacons (which are associated to the location) are detected by the SDK. Skip adding the Location Id to SonoNetConfigs if you do not want to detect only certain Sonobeacons within a single environment.
 
 #### ContentView (optional)
 The ContentView is an UI component that controls the display of content via the SDK. Mainly, the content associated to a beacon is displayed in a web view, whereby individual functions extend and enhance the user experience. You don't need to use the ContentView if you want to handle the display of content by yourself.
