@@ -4,7 +4,7 @@ Minimum requirements: iOS 10
 
 ## How to use
 
-Create a new iOS Xcode project or open an existing project. Simply add the sonolib.framework to the "Embedded Binaries" section in the general settings of your app.
+Create a new iOS Xcode project or open an existing project. Simply drag the sonolib.framework to your project.
 
 Make sure that the ‚Add to targets‘ checkbox is checked for the correct target you intend to use the framework with. You can check Copy items into destination group’s folder if needed.
 
@@ -12,17 +12,21 @@ Set „Enable Bitcode“ to No in Build Settings.
 
 #### Permissions
 Add descriptions to your Info.plist to describe why you will be using the microphone as well as location tracking.
-(Privacy - Microphone Usage Description | Privacy - Location Always Usage Description | Location When In Use Description | Location Always And When In Use UsageDescription | Privacy - Bluetooth Peripheral Usage Description | Bluetooth Always Usage Description)
+(Privacy - Microphone Usage Description | Privacy - Location Always Usage Description | Location When In Use Description | Location Always And When In Use UsageDescription | Privacy - Bluetooth Peripheral Usage Description)
 
-You additionally need to turn on Location Updates in Background Modes among Capabilities settings.
+#### Background Modes
+Turn on Remote Notifications in Background Modes among Capabilities settings if you want to use Local Push Notifications.
+In addition, you need to turn on Location Updates.
 
 #### Credentials
 We will provide you with the SDK as well as the corresponding Api key and Location Id. Note: The Location Id is an identifier used to determine a particular location/environment in which beacons can be detected. E.g. Your retail store is equipped with 5 Sonobeacons, thus only those 5 beacons (which are associated to the location) are detected by the SDK. Skip adding the Location Id to SonoNetConfigs if you do not want to detect only certain Sonobeacons within a single environment.
 
 #### ContentView (optional)
-The ContentView is an UI component that controls the display of content via the SDK. Mainly, the content associated to a beacon is displayed in a web view, whereby individual functions extend and enhance the user experience. You don't need to use the ContentView if you want to handle the display of content by yourself.
+The ContentView is a UI component that controls the display of content using the SDK. Basically, the content associated to a beacon is displayed using a web view, whereby individual functions extend and enhance the user experience.
+The ContentView also contains a side menu, which can optionally be used to display configured menu items.
+You don't need to use the ContentView if you want to handle the display of content by yourself.
 
-Usage: Simply drag an UIView to your View in Storyboard, set the Constraints and naviagte to the Identity Inspector. Rename the Class to 'ContentView'. Below, set the Module 'sonolib'. Then connect the created ContentView to the corresponding ViewController using an outlet and pass the view to SonoNet via the bind function.
+Usage: Simply drag an UIView to your View in Storyboard, set the Constraints and naviagte to the Identity Inspector. Rename the Class to 'ContentView'. Below, set the Module 'sonolib'. Then connect the created ContentView to the corresponding ViewController using an outlet and pass the view to SonoNet via the SonoNetConfigBuilder.
 
 
 ## Inside your app
@@ -38,23 +42,31 @@ import sonolib
 let sonoNet = SonoNet.shared
 ```
 
-Afterwards set up the credentials using SonoNetCredentials (locationId is optional) and initialize SonoNet. Use the closure callback to receive the content of detected Sonobeacons. The content contains the id, title and url:
+Set up the SonoNetConifgs by using SonoNetConifgBuilder. Afterwards bind SonoNet. Use the closure callback to receive the content of detected Sonobeacons. The content contains id, title and url:
 
 ```swift
-let credentials = SonoNetCredentials(apiKey: "YOUR_API_KEY", locationId: "LOCATION_ID") /* REPLACE WITH YOUR CREDENTIALS */
-// let credentials = SonoNetCredentials(apiKey: "YOUR_API_KEY")
-sonoNet.bind(withCredentials: credentials, andOptionalContentView: contentView) /* optional */
-// sonoNet.bind(withCredentials: credentials)
-
-sonoNet.didReceiveContent = { [weak self] content in
-            guard let strongSelf = self else { return }
+let config = SonoNetConfigBuilder { builder in
+            builder.apiKey = "YOUR_API_KEY"
+            builder.contentView = contentView              /* optional */
+            builder.localPush = true                       /* optional */
+            builder.hasMenu = true                         /* optional - integration is only possible in conjunction with contentView */
+            builder.debugMode = true                       /* optional */
+            builder.singleLocation = "YOUR_LOCATION_ID"    /* optional - works only together with contentView */
+            builder.preferredMic = 1                       /* optional - front mic = 1 (default) / back mic = 2 / bottom mic = 0 */
+        }
+        
+        guard let sonoNetConfig = SonoNetConfig(config) else { return }
+        sonoNet.bind(withConfig: sonoNetConfig)
+        
+        sonoNet.didReceiveContent = { [weak self] content in
+            guard let _ = self else { return }
             print("\(content.title)")
         }
 ```
 
-Note: SonoNet requires permission to use both microphone and localization. The permission to use Bluetooth is only necessary to optimize localization. Bluetooth functionality should be activated if no location Id is passed. Check out the demo app for implementation.
+Note: SonoNet requires permission to use both microphone and localization. The permission to use Bluetooth is only needed for optimizing localization. Bluetooth functionality should be activated if no Location Id is passed. Check out the demo app for implementation.
 
-### Obective-C
+### Objective-C
 
 Set „Always Embed Standard Swift Libraries“ to Yes in Build Settings. Check out the demo app.
 
