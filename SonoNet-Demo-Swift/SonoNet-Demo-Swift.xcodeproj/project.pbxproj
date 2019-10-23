@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C3A017F235DE1AD00A41DA7 /* sonolib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3A017D235DE18400A41DA7 /* sonolib.framework */; };
+		4C3A0180235DE1AD00A41DA7 /* sonolib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3A017D235DE18400A41DA7 /* sonolib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CC975C4224A6CDF00761B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC975C3224A6CDF00761B0E /* AppDelegate.swift */; };
 		4CC975C6224A6CDF00761B0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC975C5224A6CDF00761B0E /* ViewController.swift */; };
 		4CC975C9224A6CDF00761B0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC975C7224A6CDF00761B0E /* Main.storyboard */; };
@@ -15,12 +17,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4C43C753224E256A00982633 /* Embed Frameworks */ = {
+		4C3A017B235DE04700A41DA7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4C3A0180235DE1AD00A41DA7 /* sonolib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -28,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C3A017D235DE18400A41DA7 /* sonolib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sonolib.framework; sourceTree = "<group>"; };
 		4CC975C0224A6CDF00761B0E /* SonoNet-Demo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SonoNet-Demo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC975C3224A6CDF00761B0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CC975C5224A6CDF00761B0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,17 +46,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C3A017F235DE1AD00A41DA7 /* sonolib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C3A016B235DBD5300A41DA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4CC975B7224A6CDF00761B0E = {
 			isa = PBXGroup;
 			children = (
+				4C3A017D235DE18400A41DA7 /* sonolib.framework */,
 				4CC975C2224A6CDF00761B0E /* SonoNet-Demo-Swift */,
 				4CC975C1224A6CDF00761B0E /* Products */,
+				4C3A016B235DBD5300A41DA7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,7 +101,7 @@
 				4CC975BC224A6CDF00761B0E /* Sources */,
 				4CC975BD224A6CDF00761B0E /* Frameworks */,
 				4CC975BE224A6CDF00761B0E /* Resources */,
-				4C43C753224E256A00982633 /* Embed Frameworks */,
+				4C3A017B235DE04700A41DA7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -22,20 +22,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
-    
     SonoNet *sonoNet = [SonoNet shared];
-    SonoNetCredentials *credentials = [[SonoNetCredentials alloc] initWithApiKey:@"YOUR_API_KEY" locationId:@"LOCATION_ID"];
-    [sonoNet bindWithCredentials:(credentials) andOptionalContentView:_contentView];
     
+    SonoNetConfig* config = [[SonoNetConfigBuilder alloc] initWithBuildClosure:^(SonoNetConfigBuilder * builder) {
+      
+    }];
+
+    [sonoNet bindWithConfig:(config)];
     [sonoNet setWhenBluetoothDisabled:^{
         // do nothing so far
     }];
     
-    
     [sonoNet setDidReceiveContent:^(id webLink) {
-        __weak ViewController *wSelf = self;
         NSString *title = [webLink title];
         NSLog(@"Title", title);
     }];

@@ -10,22 +10,35 @@ import UIKit
 import sonolib
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var contentView: ContentView!
     
     let sonoNet = SonoNet.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let credentials = SonoNetCredentials(apiKey: "YOUR_API_KEY", locationId: "LOCATION_ID")
-        sonoNet.bind(withCredentials: credentials, andOptionalContentView: contentView)
+        
+        let config = SonoNetConfigBuilder { builder in
+            builder.apiKey = "YOUR_API_KEY"
+            builder.contentView = contentView              /* optional */
+            builder.localPush = true                       /* optional */
+            builder.hasMenu = true                         /* optional - integration is only possible in conjunction with contentView */
+            builder.debugMode = true                       /* optional */
+            builder.singleLocation = "YOUR_LOCATION_ID"    /* optional - works only together with contentView */
+            builder.preferredMic = 1                       /* optional - front mic = 1 (default) / back mic = 2 / bottom mic = 0 */
+        }
+        
+        guard let sonoNetConfig = SonoNetConfig(config) else { return }
+        sonoNet.bind(withConfig: sonoNetConfig)
         
         sonoNet.didReceiveContent = { [weak self] content in
-            guard let strongSelf = self else { return }
+            guard let _ = self else { return }
             print("\(content.title)")
         }
+        
+        
     }
     
-
+    
 }
 
