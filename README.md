@@ -51,7 +51,7 @@ let config = SonoNetConfigBuilder { builder in
             builder.localPush = true                       /* optional */
             builder.hasMenu = true                         /* optional - integration is only possible in conjunction with contentView */
             builder.debugMode = true                       /* optional */
-            builder.singleLocation = "YOUR_LOCATION_ID"    /* optional - works only together with contentView */
+            builder.singleLocation = "YOUR_LOCATION_ID"    /* optional - pass your Location ID */
             builder.preferredMic = 1                       /* optional - front mic = 1 (default) / back mic = 2 / bottom mic = 0 */
         }
         
