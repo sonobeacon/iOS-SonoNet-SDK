@@ -48,7 +48,7 @@ Set up the SonoNetConfigs by using SonoNetConfigBuilder. Afterwards bind SonoNet
 let config = SonoNetConfigBuilder { builder in
             builder.apiKey = "YOUR_API_KEY"
             builder.contentView = contentView              /* optional */
-            builder.localPush = true                       /* optional - if you want to get notified once you enter defined geographical areas */
+            builder.notifyMe = true                        /* optional - if you want to get notified once you enter defined geographical areas */
             builder.hasMenu = true                         /* optional - integration is only possible in conjunction with contentView */
             builder.debugMode = true                       /* optional */
             builder.singleLocation = "YOUR_LOCATION_ID"    /* optional - pass your Location ID */
