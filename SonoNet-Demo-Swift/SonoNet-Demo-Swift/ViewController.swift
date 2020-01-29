@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let config = SonoNetConfigBuilder { builder in
             builder.apiKey = "YOUR_API_KEY"
             builder.contentView = contentView              /* optional */
-            builder.localPush = true                       /* optional */
+            builder.notifyMe = true                       /* optional */
             builder.hasMenu = true                         /* optional - integration is only possible in conjunction with contentView */
             builder.debugMode = true                       /* optional */
             builder.singleLocation = "YOUR_LOCATION_ID"    /* optional - works only together with contentView */
