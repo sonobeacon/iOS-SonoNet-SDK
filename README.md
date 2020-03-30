@@ -44,6 +44,8 @@ let sonoNet = SonoNet.shared
 
 Set up the SonoNetConfigs by using SonoNetConfigBuilder. Afterwards bind SonoNet. Use the closure callback to receive the content of detected Sonobeacons. The content contains id, title and url:
 
+TODO: add bluetoothOnly
+
 ```swift
 let config = SonoNetConfigBuilder { builder in
             builder.apiKey = "YOUR_API_KEY"
