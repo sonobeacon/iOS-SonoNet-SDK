@@ -11,8 +11,15 @@ Make sure that the ‚Add to targets‘ checkbox is checked for the correct targ
 Set „Enable Bitcode“ to No in Build Settings.
 
 #### Permissions
-Add descriptions to your Info.plist to describe why you will be using the microphone as well as location tracking.
-(Privacy - Microphone Usage Description | Privacy - Location Always Usage Description | Location When In Use Description | Location Always And When In Use UsageDescription | Privacy - Bluetooth Peripheral Usage Description)
+Add descriptions to your Info.plist to describe why you will be using the microphone as well as location tracking. The following permissions may be required:
+```
+Privacy - Microphone Usage Description         /* only needed if bluetoothOnly flag is not set to true */
+Privacy - Location Always Usage Description
+Privacy - Location When In Use Description
+Privacy - Location Always And When In Use Usage Description
+Privacy - Bluetooth Peripheral Usage Description
+Privacy - Bluetooth Always Usage Description
+```
 
 #### Background Modes
 Turn on Remote Notifications in Background Modes among Capabilities settings if you want to use Local Push Notifications.
@@ -44,17 +51,16 @@ let sonoNet = SonoNet.shared
 
 Set up the SonoNetConfigs by using SonoNetConfigBuilder. Afterwards bind SonoNet. Use the closure callback to receive the content of detected Sonobeacons. The content contains id, title and url:
 
-TODO: add bluetoothOnly
-
 ```swift
 let config = SonoNetConfigBuilder { builder in
             builder.apiKey = "YOUR_API_KEY"
-            builder.contentView = contentView              /* optional */
+            builder.contentView = contentView              /* optional - if you want to use the app's built-in webview to show content */
             builder.notifyMe = true                        /* optional - if you want to get notified once you enter defined geographical areas */
             builder.hasMenu = true                         /* optional - integration is only possible in conjunction with contentView */
-            builder.debugMode = true                       /* optional */
+            builder.debugMode = true                       /* optional - if you wish to receive detailed debugging messages */
+            builder.bluetoothOnly = false                  /* optional - if you don't need beacon detection via microphone, defaults to false */
             builder.singleLocation = "YOUR_LOCATION_ID"    /* optional - pass your Location ID */
-            builder.preferredMic = 1                       /* optional - front mic = 1 (default) / back mic = 2 / bottom mic = 0 */
+            builder.preferredMic = 2                       /* optional - front mic = 1 / back mic = 2 (default) / bottom mic = 0 */
         }
         
         guard let sonoNetConfig = SonoNetConfig(config) else { return }
