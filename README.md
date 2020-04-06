@@ -1,17 +1,23 @@
 # iOS-SonoNet-SDK
 
+## Table of contents
+- [Installation](#installation)
+- [Inside your App](#inside-your-app)
+    - [Setup](#setup)
+    - [Location Services](#location-services)
+
 Minimum requirements: iOS 10
 
-## How to use
+## Installation
 
 Create a new iOS Xcode project or open an existing project. Simply drag the sonolib.framework to your project.
 
-Make sure that the ‚Add to targets‘ checkbox is checked for the correct target you intend to use the framework with. You can check Copy items into destination group’s folder if needed.
+Make sure that the ‚Add to targets‘ checkbox is checked for the correct target you intend to use the framework with. You can check ‚Copy items into destination group’s folder‘ if needed.
 
-Set „Enable Bitcode“ to No in Build Settings.
+Set ‚Enable Bitcode‘ to No in Build Settings.
 
 #### Permissions
-Add descriptions to your Info.plist to describe why you will be using the microphone as well as location tracking. The following permissions may be required:
+Add descriptions to your Info.plist to describe why you will be using the microphone as well as location tracking and bluetooth monitoring. Microphone may not be needed, see below:
 ```
 Privacy - Microphone Usage Description         /* only needed if bluetoothOnly flag is not set to true */
 Privacy - Location Always Usage Description
@@ -38,7 +44,9 @@ Usage: Simply drag an UIView to your View in Storyboard, set the Constraints and
 
 ## Inside your app
 
-### Swift
+### Setup
+
+#### Swift
 
 Go to your ViewController you want to use SonoNet, import sonolib and instantiate the SonoNet singleton.
 
@@ -74,7 +82,7 @@ let config = SonoNetConfigBuilder { builder in
 
 Note: SonoNet requires permission to use both microphone and localization. The permission to use Bluetooth is only needed for optimizing localization. Bluetooth functionality should be activated if no Location Id is passed. Check out the demo app for implementation.
 
-### Objective-C
+#### Objective-C
 
 Set „Always Embed Standard Swift Libraries“ to Yes in Build Settings. Check out the demo app.
 
@@ -96,3 +104,72 @@ SonoNetConfig* config = [[SonoNetConfigBuilder alloc] initWithBuildClosure:^(Son
     NSLog(@"Title", title);
     }];
 ```
+
+### Location Services
+
+The SDK provides the ability to send custom local push notification to the user based on the user's current position. In order to use this, the following implementations need to be made to ensure location services work even when the app is terminated. The notifications can be set up in our backend.
+
+#### Swift
+
+All of the following is in the AppDelegate. Declare needed variables:
+
+```swift
+let locationManager = CLLocationManager()
+private var currentLocation: CLLocation?
+```
+
+Configure the LocationManager:
+
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        let options: UNAuthorizationOptions = [.badge, .sound, .alert]
+        UNUserNotificationCenter.current()
+            .requestAuthorization(options: options) { success, error in
+                if let error = error {
+                    print(Constants.Strings.error + ": \(error)")
+                }
+        }
+        return true
+    }
+```
+
+Implement its methods:
+
+```swift
+extension AppDelegate: CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        SonoNet.shared.enteredRegion(region: region, appState: UIApplication.shared.applicationState)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        SonoNet.shared.exitedRegion(region: region, appState: UIApplication.shared.applicationState)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            guard let currentLocation = currentLocation else {
+                self.currentLocation = location
+                SonoNet.shared.newLocationFetched(location: location)
+                return
+            }
+            
+            let locationAge = -location.timestamp.timeIntervalSinceNow
+            guard locationAge < 5.0, location.horizontalAccuracy >= 0 else { return }
+            let loc1 = CLLocation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+            let loc2 = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            self.currentLocation = location
+            if loc1.distance(from: loc2) > 50 {
+                SonoNet.shared.newLocationFetched(location: location)
+            }
+        }
+    }
+    
+}
+```
+
+#### Objective-C
+
+***Translate swift code to equivalent objective-c code***

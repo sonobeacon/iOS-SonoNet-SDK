@@ -7,14 +7,28 @@
 //
 
 import UIKit
+import sonolib
+import CoreLocation
 
 @UIApplicationMain
  class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let locationManager = CLLocationManager()
+    private var currentLocation: CLLocation?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        let options: UNAuthorizationOptions = [.badge, .sound, .alert]
+        UNUserNotificationCenter.current()
+            .requestAuthorization(options: options) { success, error in
+                if let error = error {
+                    print(Constants.Strings.error + ": \(error)")
+                }
+        }
         // Override point for customization after application launch.
         return true
     }
@@ -43,4 +57,37 @@ import UIKit
 
 
 }
+
+extension AppDelegate: CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        SonoNet.shared.enteredRegion(region: region, appState: UIApplication.shared.applicationState)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        SonoNet.shared.exitedRegion(region: region, appState: UIApplication.shared.applicationState)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            guard let currentLocation = currentLocation else {
+                self.currentLocation = location
+                SonoNet.shared.newLocationFetched(location: location)
+                return
+            }
+            
+            let locationAge = -location.timestamp.timeIntervalSinceNow
+            guard locationAge < 5.0, location.horizontalAccuracy >= 0 else { return }
+            let loc1 = CLLocation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+            let loc2 = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            self.currentLocation = location
+            if loc1.distance(from: loc2) > 50 {
+                SonoNet.shared.newLocationFetched(location: location)
+            }
+        }
+    }
+    
+}
+
+
 
