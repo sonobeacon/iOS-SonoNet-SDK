@@ -70,10 +70,10 @@ let config = SonoNetConfigBuilder { builder in
             builder.singleLocation = "YOUR_LOCATION_ID"    /* optional - pass your Location ID */
             builder.preferredMic = 2                       /* optional - front mic = 1 / back mic = 2 (default) / bottom mic = 0 */
         }
-        
+
         guard let sonoNetConfig = SonoNetConfig(config) else { return }
         sonoNet.bind(withConfig: sonoNetConfig)
-        
+
         sonoNet.didReceiveContent = { [weak self] content in
             guard let _ = self else { return }
             print("\(content.title)")
@@ -92,7 +92,7 @@ Set „Always Embed Standard Swift Libraries“ to Yes in Build Settings. Check 
 @property (weak, nonatomic) IBOutlet ContentView *contentView;
 
 SonoNet *sonoNet = [SonoNet shared];
-    
+
 SonoNetConfig* config = [[SonoNetConfigBuilder alloc] initWithBuildClosure:^(SonoNetConfigBuilder * builder) {
       // assign properties
     }];
@@ -144,11 +144,11 @@ extension AppDelegate: CLLocationManagerDelegate {
         func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         SonoNet.shared.enteredRegion(region: region, appState: UIApplication.shared.applicationState)
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         SonoNet.shared.exitedRegion(region: region, appState: UIApplication.shared.applicationState)
     }
-    
+
 }
 ```
 
