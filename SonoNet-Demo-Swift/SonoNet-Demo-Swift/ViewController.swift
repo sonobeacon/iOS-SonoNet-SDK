@@ -25,7 +25,7 @@ class ViewController: UIViewController {
             builder.hasMenu = true                          /* optional - integration is only possible in conjunction with contentView */
             builder.debugMode = true                        /* optional */
             builder.bluetoothOnly = false                   /* optional */
-            builder.singleLocation = "YOUR_LOCATION_ID"     /* optional - works only together with contentView */
+            builder.singleLocation = "YOUR_LOCATION_ID"     /* optional */
             builder.preferredMic = 1                        /* optional - front mic = 1 / back mic = 2 (default) / bottom mic = 0 */
         }
         

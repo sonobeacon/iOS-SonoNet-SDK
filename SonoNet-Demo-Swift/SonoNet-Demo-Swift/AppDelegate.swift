@@ -54,8 +54,6 @@ import CoreLocation
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
 extension AppDelegate: CLLocationManagerDelegate {
@@ -68,26 +66,4 @@ extension AppDelegate: CLLocationManagerDelegate {
         SonoNet.shared.exitedRegion(region: region, appState: UIApplication.shared.applicationState)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            guard let currentLocation = currentLocation else {
-                self.currentLocation = location
-                SonoNet.shared.newLocationFetched(location: location)
-                return
-            }
-            
-            let locationAge = -location.timestamp.timeIntervalSinceNow
-            guard locationAge < 5.0, location.horizontalAccuracy >= 0 else { return }
-            let loc1 = CLLocation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
-            let loc2 = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            self.currentLocation = location
-            if loc1.distance(from: loc2) > 50 {
-                SonoNet.shared.newLocationFetched(location: location)
-            }
-        }
-    }
-    
 }
-
-
-
