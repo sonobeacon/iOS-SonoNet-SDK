@@ -32,7 +32,7 @@ Turn on Remote Notifications in Background Modes among Capabilities settings if 
 In addition, you need to turn on Location Updates.
 
 #### Credentials
-We will provide you with the SDK as well as the corresponding Api key and Location Id. Note: The Location Id is an identifier used to determine a particular location/environment in which beacons can be detected. E.g. Your retail store is equipped with 5 Sonobeacons, thus only those 5 beacons (which are associated to the location) are detected by the SDK. Skip adding the Location Id to SonoNetConfigs if you do not want to detect only certain Sonobeacons within a single environment.
+We will provide you with the SDK as well as the corresponding Api key.
 
 #### ContentView (optional)
 The ContentView is a UI component that controls the display of content using the SDK. Basically, the content associated to a beacon is displayed using a web view, whereby individual functions extend and enhance the user experience.
@@ -67,7 +67,6 @@ let config = SonoNetConfigBuilder { builder in
             builder.hasMenu = true                         /* optional - integration is only possible in conjunction with contentView */
             builder.debugMode = true                       /* optional - if you wish to receive detailed debugging messages */
             builder.bluetoothOnly = false                  /* optional - if you don't need beacon detection via microphone, defaults to false */
-            builder.singleLocation = "YOUR_LOCATION_ID"    /* optional - pass your Location ID */
             builder.preferredMic = 2                       /* optional - front mic = 1 / back mic = 2 (default) / bottom mic = 0 */
         }
 
