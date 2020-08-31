@@ -62,12 +62,13 @@ Set up the SonoNetConfigs by using SonoNetConfigBuilder. Afterwards bind SonoNet
 ```swift
 let config = SonoNetConfigBuilder { builder in
             builder.apiKey = "YOUR_API_KEY"
-            builder.contentView = contentView              /* optional - if you want to use the app's built-in webview to show content */
-            builder.notifyMe = true                        /* optional - if you want to get notified once you enter defined geographical areas */
-            builder.hasMenu = true                         /* optional - integration is only possible in conjunction with contentView */
-            builder.debugMode = true                       /* optional - if you wish to receive detailed debugging messages */
-            builder.bluetoothOnly = false                  /* optional - if you don't need beacon detection via microphone, defaults to false */
-            builder.preferredMic = 2                       /* optional - front mic = 1 / back mic = 2 (default) / bottom mic = 0 */
+            builder.contentView = ContentView               /* optional - if you want to use the app's built-in webview to show content */
+            builder.notifyMe = true                         /* optional - if you want to get notified once you enter defined geographical areas */
+            builder.hasMenu = true                          /* optional - integration is only possible in conjunction with contentView */
+            builder.debugMode = true                        /* optional - if you wish to receive detailed debugging messages */
+            builder.bluetoothOnly = functionalities         /* optional - if you don't need beacon detection via microphone, defaults to false */
+            builder.preferredMic = 2                        /* optional - front mic = 1 / back mic = 2 (default) / bottom mic = 0 */
+            builder.showMenuEntryOnlyOnce = true            /* optional - when the menu entry should be displayed only once */
         }
 
         guard let sonoNetConfig = SonoNetConfig(config) else { return }

@@ -1,8 +1,9 @@
 Changelog
 =====================
 
-## 5.0.0 (Aug, 2020)
+## 5.0.1 (Aug, 2020)
 - locationId deprecated, no longer needed
+- with the new configuration 'onlyShowMenuEntryOnce', the app can be set to show the menu entry to be displayed on app start either just once or every single time.
 
 ## 5.0.0 (Aug, 2020)
 - SDK updated to use new [backend](https://app2.sonobeacon.com/sonosystem)
