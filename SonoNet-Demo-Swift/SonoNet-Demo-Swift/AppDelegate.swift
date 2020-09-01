@@ -26,7 +26,7 @@ import CoreLocation
         UNUserNotificationCenter.current()
             .requestAuthorization(options: options) { success, error in
                 if let error = error {
-                    print(Constants.Strings.error + ": \(error)")
+                    print(error)
                 }
         }
         // Override point for customization after application launch.

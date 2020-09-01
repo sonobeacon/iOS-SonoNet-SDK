@@ -26,6 +26,7 @@ class ViewController: UIViewController {
             builder.debugMode = true                        /* optional */
             builder.bluetoothOnly = false                   /* optional */
             builder.preferredMic = 1                        /* optional - front mic = 1 / back mic = 2 (default) / bottom mic = 0 */
+            builder.showMenuEntryOnlyOnce = true            /* optional */
         }
 
         guard let sonoNetConfig = SonoNetConfig(config) else { return }
