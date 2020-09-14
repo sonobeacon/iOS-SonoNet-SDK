@@ -2,9 +2,15 @@
 
 ## Table of contents
 - [Installation](#installation)
+    - [Permissions](#permissions)
+    - [BackgroundModes](#background-modes)
+    - [Credentials](#credentials)
+    - [ContentView](#contentview-optional)
 - [Inside your App](#inside-your-app)
     - [Setup](#setup)
     - [Location Services](#location-services)
+- [Fat Framework](#fat-framework)
+    - [Deploying to the AppStore](#deploying-to-the-appstore)
 
 Minimum requirements: iOS 10
 
@@ -155,3 +161,17 @@ extension AppDelegate: CLLocationManagerDelegate {
 #### Objective-C (deprecated)
 
 ***Translate swift code to equivalent objective-c code***
+
+## Fat Framework
+
+Since version 5.1.0, the SDK is built as a universal (fat) framework. That means, that an app implementing the SDK can be run on a physical device but also on the simulator for development purposes. As a result, the framework file is rather large, **this changes when uploading to the AppStore**. Despite these changes, everything else stays the same and the framework behaves like you'd expect a regular swift framework to behave.
+
+### Deploying to the AppStore
+
+When deploying to the AppStore, it is necassary to strip the framework from code for the simulator. To do so, follow these steps:
+
+* add a run script phase to your scheme, this is done by:
+    * Navigating to `Project -> Targets -> YOUR_APP -> Build Phases`, click the + and select 'New Run Script Phase'
+* Paste [`this script`](stripsimulator.sh).
+
+That's all there is to it. Now the application is thinned on upload to the AppStore.
