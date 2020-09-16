@@ -2,6 +2,7 @@ Changelog
 =====================
 
 ## 5.1.0 (Sep, 2020)
+- backend moved to [admin.sonobeacon.com](https://admin.sonobeacon.com/)
 - detection of new content while content is being displayed is now possible
 	- while the user is looking at content, the SDK listens for new content in the background
 	- when new content is detected, it can be displayed by a new button
