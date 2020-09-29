@@ -1,13 +1,17 @@
 Changelog
 =====================
 
+## 5.2.0 (Sep, 2020)
+- color and size of text in side menu can now be set when initializing the SDK
+- overall stability improvements
+
 ## 5.1.0 (Sep, 2020)
 - backend moved to [admin.sonobeacon.com](https://admin.sonobeacon.com/)
 - detection of new content while content is being displayed is now possible
 	- while the user is looking at content, the SDK listens for new content in the background
 	- when new content is detected, it can be displayed by a new button
 - the SDK is now delivered as a universal (fat) framework
-	- Refer to the README for what that means for your development process
+	- Refer to the README to learn what that means for your development process
 
 ## 5.0.1 (Aug, 2020)
 - locationId deprecated, no longer needed

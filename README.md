@@ -75,6 +75,8 @@ let config = SonoNetConfigBuilder { builder in
             builder.bluetoothOnly = functionalities         /* optional - if you don't need beacon detection via microphone, defaults to false */
             builder.preferredMic = 2                        /* optional - front mic = 1 / back mic = 2 (default) / bottom mic = 0 */
             builder.showMenuEntryOnlyOnce = true            /* optional - when the menu entry should be displayed only once */
+            builder.menuTextColorAsHexString = "000000"     /* optional - specify the desired menu item text color in hex */
+            builder.menuFontSize = 17                       /* optional - specify the desired menu item text size */
         }
 
         guard let sonoNetConfig = SonoNetConfig(config) else { return }
