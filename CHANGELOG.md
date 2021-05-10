@@ -1,6 +1,9 @@
 Changelog
 =====================
 
+## 5.3.3 (Apr, 2021)
+- improved ble and geofence detections
+
 ## 5.2.0 (Sep, 2020)
 - color and size of text in side menu can now be set when initializing the SDK
 - overall stability improvements

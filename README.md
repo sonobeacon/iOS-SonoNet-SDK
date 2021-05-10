@@ -77,6 +77,7 @@ let config = SonoNetConfigBuilder { builder in
             builder.showMenuEntryOnlyOnce = true            /* optional - when the menu entry should be displayed only once */
             builder.menuTextColorAsHexString = "000000"     /* optional - specify the desired menu item text color in hex */
             builder.menuFontSize = 17                       /* optional - specify the desired menu item text size */
+            builder.initialLocationDebug                    /* optional - sets an intial location for registering the ble and geofence events */
         }
 
         guard let sonoNetConfig = SonoNetConfig(config) else { return }
